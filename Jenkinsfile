@@ -27,7 +27,7 @@ pipeline {
         
         stage('Archive Build') {
             steps {
-               arvhiveArtifacts artifacts: 'build/**'
+               archiveArtifacts artifacts: 'build/**'
             }
         }
     }
