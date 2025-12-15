@@ -1,4 +1,4 @@
-pipelin {
+pipeline {
     agent any
 
     environment {
@@ -15,7 +15,7 @@ pipelin {
         
         stage('Install Dependencies') {
             steps {
-              bat 'npm install'
+                bat 'npm install'
             }
         }
         
@@ -27,8 +27,24 @@ pipelin {
         
         stage('Archive Build') {
             steps {
-               arvhiveArtifacts artifacts: 'build/**'
+                archiveArtifacts artifacts: 'build/**'
             }
+        }
+
+        stage('Deploy to dev') {
+            steps {
+                // Deployment command
+                bat 'scp -r build/* user@dev-server:/var/www/html'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build Sukses!'
+        }
+        failure {
+            echo 'Build Gagal!'
         }
     }
 }
