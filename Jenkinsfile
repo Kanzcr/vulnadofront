@@ -37,8 +37,13 @@ pipeline {
                 bat 'scp -r build/* user@dev-server:/var/www/html'
             }
         }
-    }
 
+       stage('Deploy to dev') {
+    steps {
+        bat 'scp -r build/* kanz@10.100.0.36:/Users/kanz/dev-server/html'
+    }
+}
+    }
     post {
         success {
             echo 'Build Sukses!'
