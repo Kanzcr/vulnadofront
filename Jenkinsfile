@@ -49,10 +49,4 @@ pipeline {
         }
     }
 }
-=======
-               archiveArtifacts artifacts: 'build/**'
-            }
-        }
-    }
-}
 >>>>>>> 67ee1ce53c3d83d7f4f4947d022db25fe66f05b7
