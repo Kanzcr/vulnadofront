@@ -32,6 +32,9 @@ pipeline {
         }
 
        stage('Deploy to dev') {
+         when {
+        expression { false }   // selalu skip
+    }
     steps {
         bat 'scp -r build/* kanz@10.100.0.36:/Users/kanz/dev-server/html'
     }
